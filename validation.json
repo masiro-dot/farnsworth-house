@@ -1,0 +1,18 @@
+{
+  "validator": "Khronos glTF Validator",
+  "errors": 0,
+  "warnings": 0,
+  "nodes": 1413,
+  "meshes": 271,
+  "materials": 32,
+  "textures": 6,
+  "bytes": 3478484,
+  "extensions": [
+    "EXT_materials_bump",
+    "KHR_texture_transform",
+    "KHR_materials_transmission",
+    "KHR_materials_volume",
+    "KHR_materials_ior"
+  ],
+  "note": "EXT_materials_bump is not validated by this validator; unsupported viewers may ignore bump maps."
+}

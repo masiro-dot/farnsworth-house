@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#e9e8df">
+  <title>Farnsworth House — 建築を歩く</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">{"imports":{"three":"./vendor/build/three.module.js","three/addons/":"./vendor/examples/jsm/"}}</script>
+</head>
+<body>
+  <main id="viewport" aria-label="ファンズワース邸のインタラクティブ3Dモデル"></main>
+  <header><div class="eyebrow"><span class="square"></span> ARCHITECTURE STUDY <span class="edition">001 / ILLINOIS</span></div><h1>Farnsworth House<span>ファンズワース邸</span></h1><p>Ludwig Mies van der Rohe <span>1945–1951</span></p></header>
+  <div class="left-rail"><button id="home" title="初期視点へ" aria-label="初期視点へ">⌂</button><button id="rotate" title="自動回転" aria-label="自動回転" aria-pressed="false">↻</button><button id="shot" title="画像を保存" aria-label="画像を保存">▣</button></div>
+  <aside id="panel">
+    <button id="panelToggle" aria-expanded="true"><span>MODEL EXPLORER</span><span id="fold">−</span></button>
+    <div id="panelBody">
+      <div class="section-head">01 <span>空間を読む</span></div>
+      <div class="views"><button data-view="exterior" class="active">外観</button><button data-view="interior">室内</button><button data-view="plan">平面</button><button data-view="detail">ディテール</button></div>
+      <div class="switches"><label>屋根 <input id="roof" type="checkbox" checked></label><label>ガラス <input id="glass" type="checkbox" checked></label><label>家具 <input id="furniture" type="checkbox" checked></label><label>カーテン <input id="curtains" type="checkbox" checked></label><label>寸法・注釈 <input id="dimensions" type="checkbox"></label><label>周辺の樹木 <input id="landscape" type="checkbox" checked></label></div>
+      <div class="slider-label"><label for="explode">屋根を持ち上げる</label><output id="explodeValue">0.0 m</output></div><input id="explode" type="range" min="0" max="6" step="0.05" value="0">
+      <div class="section-head">02 <span>光とマテリアル</span></div>
+      <div class="light-options"><button data-light="day" class="active">昼光</button><button data-light="gold">夕景</button><button data-light="dusk">薄暮</button></div>
+      <div class="swatches"><button data-material="steel" title="白色塗装の鉄骨"><i class="steel"></i><span>鉄骨</span></button><button data-material="stone" title="トラバーチン"><i class="stone"></i><span>石</span></button><button data-material="glass" title="透明板ガラス"><i class="glass"></i><span>ガラス</span></button><button data-material="wood" title="プリマヴェーラ材"><i class="wood"></i><span>木</span></button></div>
+      <div id="materialInfo"><b>素材に触れる</b><p>スウォッチ、または建物の部材をクリックすると、素材と再現内容を確認できます。</p></div>
+      <div class="panel-actions"><button id="export">↓ GLBを書き出す</button><button id="about">資料・再現精度 ↗</button></div>
+    </div>
+  </aside>
+  <footer><div class="place"><span class="live-dot"></span> PLANO, ILLINOIS <span>41°38′08″ N · 88°32′09″ W</span></div><div class="instruction">ドラッグで回転 <b>·</b> ホイールで拡大 <b>·</b> 右ドラッグで移動</div><div class="scale">1 UNIT = 1 METER</div></footer>
+  <div id="viewCaption"><span id="viewNumber">01 / 04</span><h2 id="viewTitle">風景のなかに浮かぶ、三つの水平面。</h2><p id="viewDesc">白い鉄骨、透明なガラス、連続するトラバーチン。</p></div>
+  <div id="loading"><div class="load-mark"></div><p>FARNSWORTH HOUSE</p><span>空間を組み立てています…</span></div>
+  <div id="toast" role="status"></div>
+  <dialog id="sources"><button id="closeAbout" aria-label="閉じる">×</button><div class="eyebrow">ABOUT THE RECONSTRUCTION</div><h2>資料に基づく、建築の習作。</h2><p>実施設計・保存修復用の実測モデルではありません。主要寸法と構成は公開資料に基づき、細部は資料を参照して近似しています。</p><dl><dt>主屋・ポーチ</dt><dd>23.546 × 8.738 m</dd><dt>柱間隔 / 断面外形</dt><dd>6.706 m / 203 mm</dd><dt>天井高 / 主床高さ</dt><dd>2.896 m / 1.600 m</dd><dt>下段テラス</dt><dd>約16.84 × 6.91 m</dd><dt>板ガラス / 石仕上げ厚</dt><dd>6.35 mm / 31.8 mm</dd></dl><h3>再現の範囲</h3><p>外周8本のH形柱、床・屋根の縁、ガラスの割付、2組の階段、石の目地、設備コア、キッチン、浴室、暖炉、独立収納、カーテンをモデリングしています。屋根を外すと内部を確認できます。</p><h3>推定・簡略化した部分</h3><p>家具は後年のミース家具による展示を想起させる参考配置で、1951年の家具配置の復元ではありません。家具寸法、コア内部、金物断面の厚み、屋根設備、地形・植栽は近似です。石と木のテクスチャは手続き生成で、現物を撮影・測定したPBR素材ではありません。日照は演出用で、所在地の太陽位置を計算したものではありません。</p><h3>参照資料</h3><ul><li><a target="_blank" rel="noopener" href="https://tile.loc.gov/storage-services/master/pnp/habshaer/il/il0300/il0323/data/il0323data.pdf">Library of Congress / HABS IL-1105</a> — 建築寸法・構法の記述</li><li><a target="_blank" rel="noopener" href="https://www.loc.gov/resource/hhh.il0323.sheet/?sp=3">Library of Congress / HABS 平面図</a> — 平面配置（WTTW掲載の複製図も参照）</li><li><a target="_blank" rel="noopener" href="https://www.columbia.edu/cu/gsapp/BT/GATEWAY/FARNSWTH/gen.html">Columbia GSAPP / General Overview</a> — ガラス・床・素材</li><li><a target="_blank" rel="noopener" href="https://edithfarnsworthhouse.org/wp-content/uploads/Mies-van-der-Rohe-Farnsworth-house.pdf">Edith Farnsworth House / 寸法資料</a> — 公開検索で確認した寸法表</li></ul><p class="fine">Three.js r180 · 1 unit = 1 m · Y-up · +X = 東 / −Z = 北<br>GLBには建物・家具・テクスチャを含みます。敷地、照明、寸法注釈は含みません。</p></dialog>
+  <script type="module" src="app.js"></script>
+</body></html>
